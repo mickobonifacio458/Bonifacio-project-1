@@ -418,6 +418,18 @@ h2 {
 
 .project-card {
   min-width: 0;
+  padding: 10px 10px 18px;
+  border: 1px solid rgba(223, 227, 220, 0.8);
+  border-radius: 6px;
+  background: var(--paper);
+  box-shadow: 0 5px 16px rgba(23, 32, 24, 0.025);
+  transition: transform 280ms cubic-bezier(.22, 1, .36, 1), box-shadow 280ms ease, border-color 280ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: #cbd6c8;
+  box-shadow: 0 18px 34px rgba(23, 32, 24, 0.1);
 }
 
 .project-art {
@@ -599,12 +611,14 @@ h2 {
   place-items: center;
   border: 1px solid #ccd1c8;
   border-radius: 50%;
-  transition: background 180ms ease, color 180ms ease;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
+.project-card:hover .project-meta a,
 .project-meta a:hover {
   background: var(--ink);
   color: white;
+  transform: rotate(45deg);
 }
 
 .about {
@@ -1097,6 +1111,10 @@ footer p {
   .button,
   .nav-links a,
   .nav-button,
+  .project-card,
+  .project-art,
+  .browser,
+  .phone,
   .project-meta a {
     transition: none;
   }
