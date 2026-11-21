@@ -85,10 +85,8 @@ a {
   padding: 0 22px;
   border: 1px solid rgba(223, 227, 220, 0.9);
   border-radius: 8px;
-  background: rgba(255, 254, 249, 0.9);
+  background: rgba(255, 254, 249, 0.97);
   box-shadow: 0 10px 32px rgba(23, 32, 24, 0.045);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
 }
 
 .brand {
