@@ -589,6 +589,40 @@ h2 {
   color: white;
 }
 
+.credentials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 24px 0 8px;
+}
+
+.credentials div {
+  min-width: 0;
+  padding: 14px 12px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #fbfaf5;
+}
+
+.credentials span,
+.credentials strong {
+  display: block;
+}
+
+.credentials span {
+  margin-bottom: 6px;
+  color: #899087;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.credentials strong {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
 .contact {
   text-align: center;
 }
@@ -846,6 +880,10 @@ footer p {
 
   .about-copy {
     padding: 60px 24px;
+  }
+
+  .credentials {
+    grid-template-columns: 1fr;
   }
 
   .contact-link {
