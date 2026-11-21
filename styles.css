@@ -19,9 +19,21 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  background: var(--cream);
+  background:
+    radial-gradient(circle at 8% 12%, rgba(204, 228, 169, 0.12), transparent 18rem),
+    var(--cream);
   font-family: "DM Sans", sans-serif;
   animation: page-in 700ms cubic-bezier(.22, 1, .36, 1) both;
+}
+
+::selection {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid rgba(66, 107, 85, 0.35);
+  outline-offset: 4px;
 }
 
 @keyframes page-in {
@@ -61,6 +73,8 @@ a {
 }
 
 .site-header {
+  position: relative;
+  z-index: 30;
   width: min(1180px, calc(100% - 64px));
   height: 96px;
   margin: 0 auto;
@@ -89,6 +103,7 @@ a {
   color: white;
   font-size: 12px;
   letter-spacing: -1px;
+  box-shadow: 0 8px 20px rgba(23, 32, 24, 0.12);
 }
 
 .nav-links {
@@ -132,6 +147,18 @@ a {
   grid-template-columns: 55% 45%;
   align-items: center;
   overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: 35%;
+  top: 140px;
+  border: 1px solid rgba(66, 107, 85, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .hero-copy {
@@ -213,6 +240,13 @@ h2 em {
 .button-primary {
   background: var(--ink);
   color: white;
+  box-shadow: 0 12px 26px rgba(23, 32, 24, 0.12);
+}
+
+.button-primary:hover,
+.button-dark:hover {
+  background: var(--green);
+  box-shadow: 0 16px 30px rgba(66, 107, 85, 0.18);
 }
 
 .text-link {
@@ -243,6 +277,12 @@ h2 em {
   background: linear-gradient(145deg, #b8cda7, #e3e9d7);
   box-shadow: 0 30px 70px rgba(40, 55, 43, 0.12);
   overflow: hidden;
+  transition: transform 500ms cubic-bezier(.22, 1, .36, 1), box-shadow 500ms ease;
+}
+
+.portrait:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 38px 80px rgba(40, 55, 43, 0.18);
 }
 
 .profile-photo {
@@ -410,6 +450,22 @@ h2 {
   display: grid;
   place-items: center;
   overflow: hidden;
+  border-radius: 4px;
+  transition: transform 500ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.project-card:hover .project-art {
+  transform: translateY(-5px);
+}
+
+.project-card:hover .browser,
+.project-card:hover .phone {
+  transform: rotate(0deg) scale(1.03);
+}
+
+.browser,
+.phone {
+  transition: transform 500ms cubic-bezier(.22, 1, .36, 1);
 }
 
 .project-card:not(.project-large) .project-art {
@@ -664,6 +720,13 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 3px;
   background: #fbfaf5;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.credentials div:hover {
+  transform: translateY(-3px);
+  border-color: #b9c6b8;
+  background: white;
 }
 
 .credentials span,
@@ -715,10 +778,32 @@ h2 {
   background: #fbfaf5;
   font-size: 11px;
   font-weight: 600;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.tag-list span:hover {
+  background: var(--ink);
+  color: white;
+  transform: translateY(-2px);
 }
 
 .contact {
   text-align: center;
+  position: relative;
+  isolation: isolate;
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: min(780px, 90%);
+  height: 280px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -44%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(204, 228, 169, 0.28), transparent 68%);
 }
 
 .contact .eyebrow {
@@ -738,6 +823,12 @@ h2 {
   font-family: "Manrope", sans-serif;
   font-size: clamp(22px, 3vw, 36px);
   font-weight: 700;
+  transition: color 180ms ease, gap 180ms ease;
+}
+
+.contact-link:hover {
+  color: var(--green);
+  gap: 28px;
 }
 
 footer {
