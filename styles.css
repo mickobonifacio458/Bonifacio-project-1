@@ -73,21 +73,28 @@ a {
 }
 
 .site-header {
-  position: relative;
+  position: sticky;
   z-index: 30;
+  top: 12px;
   width: min(1180px, calc(100% - 64px));
-  height: 96px;
-  margin: 0 auto;
+  height: 76px;
+  margin: 12px auto 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--line);
+  padding: 0 22px;
+  border: 1px solid rgba(223, 227, 220, 0.9);
+  border-radius: 8px;
+  background: rgba(255, 254, 249, 0.9);
+  box-shadow: 0 10px 32px rgba(23, 32, 24, 0.045);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-family: "Manrope", sans-serif;
   font-size: 17px;
   font-weight: 800;
@@ -108,30 +115,34 @@ a {
 
 .nav-links {
   display: flex;
-  gap: 38px;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid rgba(223, 227, 220, 0.75);
+  border-radius: 6px;
+  background: rgba(247, 246, 241, 0.65);
   font-size: 14px;
   font-weight: 600;
 }
 
 .nav-links a {
   position: relative;
-  padding: 38px 0;
+  padding: 10px 15px;
+  border-radius: 4px;
+  color: #687168;
+  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 100%;
-  bottom: 24px;
-  height: 2px;
+.nav-links a:hover {
+  color: var(--ink);
+  background: rgba(255, 254, 249, 0.9);
+  transform: translateY(-1px);
+}
+
+.nav-links a.active {
+  color: white;
   background: var(--ink);
-  transition: right 180ms ease;
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-  right: 0;
+  box-shadow: 0 4px 10px rgba(23, 32, 24, 0.12);
 }
 
 .nav-toggle,
@@ -876,7 +887,15 @@ footer p {
     justify-content: center;
     gap: 7px;
     border: 1px solid var(--line);
-    border-radius: 50%;
+    border-radius: 5px;
+    background: var(--paper);
+    cursor: pointer;
+    transition: background 180ms ease, border-color 180ms ease;
+  }
+
+  .nav-button:hover {
+    background: #edf2e8;
+    border-color: #c8d3c4;
   }
 
   .nav-button span {
@@ -888,23 +907,22 @@ footer p {
   .nav-links {
     position: absolute;
     z-index: 20;
-    top: 82px;
-    left: 20px;
-    right: 20px;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
     display: none;
     flex-direction: column;
-    gap: 0;
-    padding: 12px 22px;
-    background: var(--paper);
+    align-items: stretch;
+    gap: 4px;
+    padding: 10px;
+    border-radius: 6px;
+    background: rgba(255, 254, 249, 0.98);
     border: 1px solid var(--line);
+    box-shadow: 0 18px 34px rgba(23, 32, 24, 0.12);
   }
 
   .nav-links a {
-    padding: 14px 0;
-  }
-
-  .nav-links a::after {
-    display: none;
+    padding: 13px 15px;
   }
 
   .nav-toggle:checked ~ .nav-links {
@@ -976,7 +994,9 @@ footer p {
   }
 
   .site-header {
-    height: 82px;
+    width: calc(100% - 32px);
+    height: 68px;
+    padding: 0 14px;
   }
 
   .brand {
@@ -1111,7 +1131,8 @@ footer p {
   }
 
   .button,
-  .nav-links a::after,
+  .nav-links a,
+  .nav-button,
   .project-meta a {
     transition: none;
   }
